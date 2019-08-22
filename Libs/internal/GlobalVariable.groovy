@@ -9,31 +9,13 @@ import com.kms.katalon.core.main.TestCaseMain
  */
 public class GlobalVariable {
      
-    /**
-     * <p></p>
-     */
-    public static Object baseUrl
-     
-    /**
-     * <p></p>
-     */
-    public static Object successCode
-     
-    /**
-     * <p></p>
-     */
-    public static Object globalId
-     
 
     static {
         try {
             def selectedVariables = TestCaseMain.getGlobalVariables("default")
 			selectedVariables += TestCaseMain.getGlobalVariables(RunConfiguration.getExecutionProfile())
-            selectedVariables += TestCaseMain.getParsedValues(RunConfiguration.getOverridingParameters())
+            selectedVariables += RunConfiguration.getOverridingParameters()
     
-            baseUrl = selectedVariables['baseUrl']
-            successCode = selectedVariables['successCode']
-            globalId = selectedVariables['globalId']
             
         } catch (Exception e) {
             TestCaseMain.logGlobalVariableError(e)
